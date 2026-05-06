@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Define the target directory
+TARGET_DIR="$HOME/Documents/scans"
+
+echo "-----------------------------------"
+echo "Starting Cleanup Process..."
+echo "Target: $TARGET_DIR"
+
+# Check if the directory exists before trying to delete anything
+if [ -d "$TARGET_DIR" ]; then
+    
+    # Use 'find' to locate only files (-type f) inside the directory (and subdirectories like /cropped)
+    # and delete them (-delete). This completely ignores folder structures.
+    find "$TARGET_DIR" -type f -delete
+    
+    echo "Cleanup successful! All files removed."
+    echo "Your folder structure (including 'cropped') remains intact."
+else
+    echo "Error: Directory $TARGET_DIR does not exist."
+fi
+
+echo "-----------------------------------"
+read -p "Press [ENTER] to exit..."
